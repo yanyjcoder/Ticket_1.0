@@ -1,6 +1,7 @@
 package com.ticket.yanyj.util;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.ticket.yanyj.emty.Ticket;
@@ -17,6 +18,7 @@ public class TicketUtil {
 	 * @author yanyj
 	 * @date 2016Äê7ÔÂ30ÈÕ
 	 */
+	@SuppressWarnings("deprecation")
 	public static List<Ticket> convertStringToTicketMap(List<String> list) {
 		
 		List<Ticket> tickets = new ArrayList<Ticket>();
@@ -55,7 +57,7 @@ public class TicketUtil {
 				break;
 			case 7:
 				info = list.get(i).split(" ");
-				ticket.setDate(info[0] + " " +info[2]);
+				ticket.setDate(new Date(info[0] + " " +info[2]));
 				break;
 			default:
 				break;

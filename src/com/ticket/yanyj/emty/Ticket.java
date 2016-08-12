@@ -1,10 +1,12 @@
 package com.ticket.yanyj.emty;
 
+import java.util.Date;
+
 /**
  * 彩票实体类
  * @author yanyj
  * @date 2016年7月30日
- */
+ */  
 public class Ticket {
 
 	//彩票ID
@@ -14,7 +16,7 @@ public class Ticket {
 	//彩票类型
 	private String type;
 	//购彩时间
-	private String date;
+	private Date date;
 	//购买种类
 	private String betType;
 	//购买金额
@@ -59,11 +61,11 @@ public class Ticket {
 		this.type = type;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -78,7 +80,7 @@ public class Ticket {
 	public float getStake() {
 		return stake;
 	}
-
+	
 	public void setStake(float stake) {
 		this.stake = stake;
 	}
@@ -91,7 +93,6 @@ public class Ticket {
 		this.team = team;
 	}
 
-
 	public String getJsbf() {
 		return jsbf;
 	}
@@ -103,11 +104,11 @@ public class Ticket {
 	public String getEndScore() {
 		return endScore;
 	}
-
+	
 	public void setEndScore(String endScore) {
 		this.endScore = endScore;
 	}
-
+ 
 	public float getOdds() {
 		return odds;
 	}
@@ -115,7 +116,7 @@ public class Ticket {
 	public void setOdds(float odds) {
 		this.odds = odds;
 	}
-
+	
 	public float getGmbl() {
 		return gmbl;
 	}
