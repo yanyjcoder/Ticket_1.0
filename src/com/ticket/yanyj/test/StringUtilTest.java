@@ -18,4 +18,9 @@ public class StringUtilTest {
 		list.add("²ÎÊý2");
 		System.out.println(StringUtil.replaceSql(sql, list));
 	}
+	
+	@Test
+	public void testIsNotNull() {
+		System.out.println(StringUtil.isNotNull("123"));
+	}
 }

@@ -31,6 +31,8 @@ public class Ticket {
 	private float odds;
 	//购买比率
 	private float gmbl;
+	//删除标志
+	private String deleteFlag;
 	
 	/**构造方法*/
 	public Ticket() {
@@ -123,6 +125,14 @@ public class Ticket {
 
 	public void setGmbl(float gmbl) {
 		this.gmbl = gmbl;
+	}
+
+	public String getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 	
 	

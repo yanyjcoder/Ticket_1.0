@@ -1,7 +1,8 @@
 package com.ticket.yanyj.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import com.ticket.yanyj.emty.Ticket;
@@ -14,14 +15,15 @@ import com.ticket.yanyj.emty.Ticket;
 public class TicketUtil {
 
 	/**
-	 *将彩票字符串转换为List<Map>集合
+	 *将彩票字符串转换为List<Ticket>集合
 	 * @author yanyj
+	 * @throws ParseException 
 	 * @date 2016年7月30日
 	 */
-	@SuppressWarnings("deprecation")
-	public static List<Ticket> convertStringToTicketMap(List<String> list) {
+	public static List<Ticket> convertStringToTicketMap(List<String> list) throws ParseException {
 		
 		List<Ticket> tickets = new ArrayList<Ticket>();
+		SimpleDateFormat sdf = new SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " );
 		Ticket ticket = null;
 		String[] info = null;
 		for (int i = 0 ; i < list.size(); i++) {
@@ -57,13 +59,14 @@ public class TicketUtil {
 				break;
 			case 7:
 				info = list.get(i).split(" ");
-				ticket.setDate(new Date(info[0] + " " +info[2]));
+				ticket.setDate(sdf.parse(" " + info[0].replaceAll("/", "-") + " " +info[2]));
 				break;
 			default:
 				break;
 			}
 			
 		}
+		
 		return tickets;
 		
 	} 

@@ -12,4 +12,8 @@ public class TicketConstant {
 	public static final String DB_STR="jdbc:sqlserver://121.40.167.171:1433;DatabaseName=ticket_test";
 	public static final String DB_USER="yanyj";
 	public static final String DB_PASSWORD="jun";
+	//Î´É¾³ý
+	public static final String DeleteFlag_NO = "0";
+	//ÒÑÉ¾³ý
+	public static final String DeleteFlag_YES = "1";
 }

@@ -24,4 +24,16 @@ public class StringUtil {
 		
 		return sb.toString();
 	}
+	
+	/**
+	 * 判断字符串不为空
+	 * @author yanyj
+	 * @date 2016年8月13日
+	 */
+	public static boolean isNotNull(String str) {
+		if(str == null || "".equals(str)) {
+			return false;
+		}
+		return true;
+	} 
 }
