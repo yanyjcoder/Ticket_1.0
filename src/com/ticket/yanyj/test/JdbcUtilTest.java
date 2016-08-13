@@ -1,4 +1,4 @@
-package com.ticket.yanyj.util.test;
+package com.ticket.yanyj.test;
 
 import java.sql.Connection;
 
