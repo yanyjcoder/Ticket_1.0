@@ -39,4 +39,11 @@ public interface TicketService {
 	 * @date 2016年8月13日
 	 */
 	public List<Ticket> getByCondition(Map<String, Object> condition) throws Exception;
+	
+	/**
+	 * 跟新
+	 * @author yanyj
+	 * @date 2016年8月14日
+	 */
+	public boolean update(Ticket ticket) throws Exception;
 }

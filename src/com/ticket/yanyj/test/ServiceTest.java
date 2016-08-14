@@ -3,6 +3,7 @@ package com.ticket.yanyj.test;
 import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -62,4 +63,14 @@ public class ServiceTest {
 		}
 		
 	}
+	
+	@Test
+	public void testUpadte() throws Exception {
+		TicketDAO td = new TicketDAOImpl();
+		Ticket t = td.get("12");
+		t.setDate(new Date());
+		System.out.println(td.update(t));
+		System.out.println(td.get("12").getDate());
+	}
+	
 }

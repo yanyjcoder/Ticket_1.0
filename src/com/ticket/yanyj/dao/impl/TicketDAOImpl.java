@@ -3,6 +3,7 @@ package com.ticket.yanyj.dao.impl;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -150,5 +151,42 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		}
 		
 		return executeQuery(sql.toString(), args);
+	}
+	
+	/**
+	 * 跟新
+	 * @author yanyj
+	 * @date 2016年8月14日
+	 */
+	@Override
+	public boolean update(Ticket ticket) throws Exception {
+		String sql = "update t_ticket set class = ?,betType = ?,date = ?,endScore = ?,"
+				+ "gmbl = ?,jsbf = ?,odds = ?,stake = ?,team = ?,type = ?, deleteFlag = ? where ID = ?";
+		List<Object> args = new ArrayList<>();
+		args.add(ticket.getClazz());
+		args.add(ticket.getBetType());
+		SimpleDateFormat sdf =   new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
+		args.add(sdf.format(ticket.getDate()));
+		args.add(ticket.getEndScore());
+		args.add(ticket.getGmbl());
+		args.add(ticket.getJsbf());
+		args.add(ticket.getOdds());
+		args.add(ticket.getStake());
+		args.add(ticket.getTeam());
+		args.add(ticket.getType());
+		args.add(ticket.getDeleteFlag());
+		args.add(ticket.getID());
+		return executeUpdate(sql,args) > 0;
+	}
+
+	/**
+	 * 删除
+	 * @author yanyj
+	 * @date 2016年8月14日
+	 */
+	@Override
+	public boolean delete(String ID) throws Exception {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

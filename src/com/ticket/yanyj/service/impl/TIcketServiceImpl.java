@@ -51,4 +51,14 @@ public class TIcketServiceImpl implements TicketService {
 	public List<Ticket> getByCondition(Map<String, Object> condition) throws Exception {
 		return ticketDAO.getByCondition(condition);
 	}
+	
+	/**
+	 * 跟新
+	 * @author yanyj
+	 * @date 2016年8月14日
+	 */
+	@Override
+	public boolean update(Ticket ticket) throws Exception {
+		return ticketDAO.update(ticket);
+	}
 }
