@@ -23,7 +23,7 @@ public class TicketUtil {
 	public static List<Ticket> convertStringToTicketMap(List<String> list) throws ParseException {
 		
 		List<Ticket> tickets = new ArrayList<Ticket>();
-		SimpleDateFormat sdf = new SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " );
+		SimpleDateFormat sdf = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss" );
 		Ticket ticket = null;
 		String[] info = null;
 		for (int i = 0 ; i < list.size(); i++) {
@@ -53,13 +53,13 @@ public class TicketUtil {
 				ticket.setTeam(list.get(i).trim());
 				break;
 			case 5:
-				ticket.setID(list.get(i));
+				ticket.setID(list.get(i).substring(3));
 				break;
 			case 6:
 				break;
 			case 7:
 				info = list.get(i).split(" ");
-				ticket.setDate(sdf.parse(" " + info[0].replaceAll("/", "-") + " " +info[2]));
+				ticket.setDate(sdf.parse(info[0].replaceAll("/", "-") + " " +info[2]));
 				break;
 			default:
 				break;

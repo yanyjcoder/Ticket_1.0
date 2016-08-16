@@ -1,14 +1,13 @@
 package com.ticket.yanyj.test;
 
-import java.util.List;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
 import com.ticket.yanyj.dao.TicketDAO;
 import com.ticket.yanyj.dao.impl.TicketDAOImpl;
 import com.ticket.yanyj.emty.Ticket;
@@ -19,10 +18,10 @@ public class ServiceTest {
 	public void testSave() throws ParseException {
 		TicketDAO td = new TicketDAOImpl();
 		Ticket ticket = new Ticket();
-		ticket .setID("12");
+		ticket .setID("10062763255011");
 		ticket.setClazz("123");
 		ticket.setBetType("qwe");
-		SimpleDateFormat sdf =   new SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " );
+		SimpleDateFormat sdf = new SimpleDateFormat( " yyyy-MM-dd HH:mm:ss " );
 		ticket.setDate(sdf.parse(" 2008-7-1 19:20:00 "));
 		ticket.setEndScore("1");
 		ticket.setGmbl(0.01f);
@@ -52,15 +51,10 @@ public class ServiceTest {
 	@Test
 	public void testGetByCondition() throws Exception {
 		TicketDAO td = new TicketDAOImpl();
-		Map<String, Object> map = new HashMap<>();
-		map.put("ID", "126");
-		map.put("odds", "0.01");
 
 		
-		List<Ticket> lst =  td.getByCondition(map);
-		for(Ticket t : lst) {
-			System.out.println(t.getID());
-		}
+		List<Ticket> lst =  td.getByCondition(null);
+		System.out.println(JSON.toJSONString(lst));
 		
 	}
 	

@@ -93,63 +93,64 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		List<Object> args = new ArrayList<>();
 		StringBuilder sql = new StringBuilder("select * from t_ticket where deleteFlag = ?");
 		args.add(TicketConstant.DeleteFlag_NO);
-		//将删选条件给删选出来
-		String ID = (String) condition.get("ID");
-		String clazz = (String) condition.get("class");
-		String betType = (String) condition.get("betType");
-		String date = (String) condition.get("date");
-		String endScore = (String) condition.get("endScore");
-		String gmbl = (String) condition.get("gmbl");
-		String jsbf = (String) condition.get("jsbf");
-		String odds = (String) condition.get("odds");
-		String stake = (String) condition.get("stake");
-		String team = (String) condition.get("team");
-		String type = (String) condition.get("type");
-		if(StringUtil.isNotNull(ID)) {
-			sql.append(" and ID = ?");
-			args.add(ID);
+		if(condition != null ) {
+			//将删选条件给删选出来
+			String ID = (String) condition.get("ID");
+			String clazz = (String) condition.get("class");
+			String betType = (String) condition.get("betType");
+			String date = (String) condition.get("date");
+			String endScore = (String) condition.get("endScore");
+			String gmbl = (String) condition.get("gmbl");
+			String jsbf = (String) condition.get("jsbf");
+			String odds = (String) condition.get("odds");
+			String stake = (String) condition.get("stake");
+			String team = (String) condition.get("team");
+			String type = (String) condition.get("type");
+			if(StringUtil.isNotNull(ID)) {
+				sql.append(" and ID = ?");
+				args.add(ID);
+			}
+			if(StringUtil.isNotNull(clazz)) {
+				sql.append(" and clazz = ?");
+				args.add(clazz);
+			}
+			if(StringUtil.isNotNull(betType)) {
+				sql.append(" and betType = ?");
+				args.add(betType);
+			}
+			if(StringUtil.isNotNull(date)) {
+				sql.append(" and date = ?");
+				args.add(date);
+			}
+			if(StringUtil.isNotNull(endScore)) {
+				sql.append(" and endScore = ?");
+				args.add(endScore);
+			}
+			if(StringUtil.isNotNull(gmbl)) {
+				sql.append(" and gmbl = ?");
+				args.add(gmbl);
+			}
+			if(StringUtil.isNotNull(jsbf)) {
+				sql.append(" and jsbf = ?");
+				args.add(jsbf);
+			}
+			if(StringUtil.isNotNull(odds)) {
+				sql.append(" and odds = ?");
+				args.add(odds);
+			}
+			if(StringUtil.isNotNull(stake)) {
+				sql.append(" and stake = ?");
+				args.add(stake);
+			}
+			if(StringUtil.isNotNull(team)) {
+				sql.append(" and team = ?");
+				args.add(team);
+			}
+			if(StringUtil.isNotNull(type)) {
+				sql.append(" and type = ?");
+				args.add(type);
+			}
 		}
-		if(StringUtil.isNotNull(clazz)) {
-			sql.append(" and clazz = ?");
-			args.add(clazz);
-		}
-		if(StringUtil.isNotNull(betType)) {
-			sql.append(" and betType = ?");
-			args.add(betType);
-		}
-		if(StringUtil.isNotNull(date)) {
-			sql.append(" and date = ?");
-			args.add(date);
-		}
-		if(StringUtil.isNotNull(endScore)) {
-			sql.append(" and endScore = ?");
-			args.add(endScore);
-		}
-		if(StringUtil.isNotNull(gmbl)) {
-			sql.append(" and gmbl = ?");
-			args.add(gmbl);
-		}
-		if(StringUtil.isNotNull(jsbf)) {
-			sql.append(" and jsbf = ?");
-			args.add(jsbf);
-		}
-		if(StringUtil.isNotNull(odds)) {
-			sql.append(" and odds = ?");
-			args.add(odds);
-		}
-		if(StringUtil.isNotNull(stake)) {
-			sql.append(" and stake = ?");
-			args.add(stake);
-		}
-		if(StringUtil.isNotNull(team)) {
-			sql.append(" and team = ?");
-			args.add(team);
-		}
-		if(StringUtil.isNotNull(type)) {
-			sql.append(" and type = ?");
-			args.add(type);
-		}
-		
 		return executeQuery(sql.toString(), args);
 	}
 	

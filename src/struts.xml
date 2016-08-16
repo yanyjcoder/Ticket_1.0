@@ -7,7 +7,7 @@
 	<package name="default" namespace="/" extends="struts-default">
 		<action name="test" class="com.ticket.yanyj.action.TestAction"
 			method="execute">
-			<result name="sucess">/WEB-INF/jsp/test.jsp</result>
+			<result name="list">index.jsp</result>
 		</action>
 	</package>
 
