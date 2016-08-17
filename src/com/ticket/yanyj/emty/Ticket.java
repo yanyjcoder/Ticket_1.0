@@ -33,6 +33,8 @@ public class Ticket {
 	private float gmbl;
 	//删除标志
 	private String deleteFlag;
+	//盈利
+	private float profit;
 	
 	/**构造方法*/
 	public Ticket() {
@@ -133,6 +135,14 @@ public class Ticket {
 
 	public void setDeleteFlag(String deleteFlag) {
 		this.deleteFlag = deleteFlag;
+	}
+
+	public float getProfit() {
+		return profit;
+	}
+
+	public void setProfit(float profit) {
+		this.profit = profit;
 	}
 	
 	

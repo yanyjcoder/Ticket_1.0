@@ -101,7 +101,8 @@ public class StringUtil {
 					+ "\",\"stake\": \"" + ticket.getStake()
 					+ "\",\"team\": \"" + ticket.getTeam()
 					+ "\",\"type\": \"" + ticket.getType()
-					+ "\",\"date\": \"" + ticket.getDate().toString()+"\"}";
+					+ "\",\"date\": \"" + ticket.getDate().toString()
+					+ "\",\"profit\": \"" + ticket.getProfit()+"\"}";
 			if(i != pageSize + index - 1 && i != totalRecord - 1) {
 				json += ",";
 			}

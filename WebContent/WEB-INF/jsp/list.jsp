@@ -24,7 +24,7 @@
 
 			url : 'list.action',
 			datatype : "json",
-			colNames : [ '彩票ID', '彩票种类', '彩票类型', '购彩时间', '购买种类', '队伍信息','即时比分','购买比率','赔率','比赛结果' ],
+			colNames : [ '彩票ID', '彩票种类', '彩票类型', '购彩时间', '购买种类', '队伍信息','即时比分','购买比率','赔率','购买金额','比赛结果' ,'盈利'],
 			colModel : [ {
 				name : 'ID',
 				index : 'ID',
@@ -64,6 +64,11 @@
 				width : 20,
 				sortable : false
 			}, {
+				name : 'odds',
+				index : 'odds',
+				width : 20,
+				sortable : false
+			},{
 				name : 'stake',
 				index : 'stake',
 				width : 20,
@@ -75,7 +80,13 @@
 				sortable : false,
 				editable: true, 
 				formatter:endFmatter
-			}  ],
+			}, {
+				name : 'profit',
+				index : 'profit',
+				width : 20,
+				sortable : false,
+				formatter:profitFmatter
+			}],
 
 			pager : '#pager2', //分页工具栏,指定了jqGrid页脚显示位置
 			sortname : 'ID', //排序
@@ -97,15 +108,28 @@
 		});
 		jQuery("#list2").jqGrid('navGrid', '#pager2', {
 			edit : true,
-			add : false,
+			add : true,
 			del : true
 		});
 	});  
 	function endFmatter (cellvalue, options, rowObject) { 
 		if(cellvalue == null || cellvalue == 'null') {
-			return "<input type='text' />";
+			return " ";
 		}
-		return 
+		return ;
+	}
+	function profitFmatter (cellvalue, options, rowObject) { 
+		var profit =  rowObject["odds"] * rowObject["stake"]; 
+		if(rowObject["endScore"] == null || rowObject["endScore"] == 'null') {
+			return '&#65509; 0.0';
+		}
+		return '&#65509; ' + profit;
+	}
+	
+	//计算盈利
+	function calcuProfit(gmbl,odds,stake,jsbf,endScore){
+		//当购买的比率以。5结尾
+		//当购买的比率后面为。75
 	}
 </script>
 </head>

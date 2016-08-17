@@ -33,6 +33,7 @@ public class TicketUtil {
 					tickets.add(ticket);
 				}
 				ticket = new Ticket();
+				ticket.setProfit(0);
 				info = list.get(i).trim().split("/");
 				ticket.setClazz(info[0]);
 				ticket.setType(info[1]);
