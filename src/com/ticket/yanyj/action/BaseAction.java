@@ -15,7 +15,23 @@ public class BaseAction extends ActionSupport{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	private String page ;
+	private String rows ;
+	public String getPage() {
+		return page;
+	}
+
+	public void setPage(String page) {
+		this.page = page;
+	}
+
+	public String getRows() {
+		return rows;
+	}
+
+	public void setRows(String rows) {
+		this.rows = rows;
+	}
 	private String render(String text, String contentType)
 	  {
 	    try

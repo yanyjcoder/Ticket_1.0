@@ -20,6 +20,7 @@ public class BaseDAO {
 
 	private static Connection con = JdbcUtil.createConnetionByDefalut();
 	
+	
 	public int executeUpdate(String query, List<Object> args) throws Exception {
 		
 		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args));
@@ -94,5 +95,6 @@ public class BaseDAO {
 	public Connection getCon() {
 		return con;
 	}
+
 	
 }

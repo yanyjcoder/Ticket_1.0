@@ -8,44 +8,44 @@ import com.ticket.yanyj.emty.Ticket;
 public interface TicketDAO {
 
 	/**
-	 * ±£´æÊµÌå
+	 * ä¿å­˜å•ä¸ªå®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public boolean save(Ticket ticket) throws Exception;
 
 	/**
-	 * ±£´æÈ«²¿ÊµÌå
+	 * ä¿å­˜å…¨éƒ¨å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public boolean saveAll(List<Ticket> ticketList) throws Exception;
 	
 	/**
-	 * Í¨¹ıID»ñÈ¡²ÊÆ±ÊµÌå
+	 * æ ¹æ®IdæŸ¥è¯¢
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public Ticket get(String ID) throws Exception;
 	
 	/**
-	 * ¸ù¾İÌõ¼şÉ¾Ñ¡
+	 * æ ¹æ®æ¡ä»¶æŸ¥è¯¢
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public List<Ticket> getByCondition(Map<String, Object> condition) throws Exception;
 	
 	/**
-	 * ¸úĞÂ
+	 * æ›´æ–°å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ14ÈÕ
+	 * @date 2016å¹´8æœˆ14æ—¥
 	 */
 	public boolean update(Ticket ticket) throws Exception;
 	
 	/**
-	 * É¾³ı
+	 * åˆ é™¤
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ14ÈÕ
+	 * @date 2016å¹´8æœˆ14æ—¥
 	 */
 	public boolean delete(String ID) throws Exception;
 }

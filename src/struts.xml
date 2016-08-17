@@ -5,9 +5,13 @@
 <struts>
 
 	<package name="default" namespace="/" extends="struts-default">
-		<action name="test" class="com.ticket.yanyj.action.TestAction"
-			method="execute">
+		<action name="list" class="com.ticket.yanyj.action.TicketAction"
+			method="list">
 			<result name="list">index.jsp</result>
+		</action>
+		<action name="link" class="com.ticket.yanyj.action.TicketAction"
+			method="link">
+			<result name="success">/WEB-INF/jsp/list.jsp</result>
 		</action>
 	</package>
 

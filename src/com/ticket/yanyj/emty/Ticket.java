@@ -3,42 +3,42 @@ package com.ticket.yanyj.emty;
 import java.util.Date;
 
 /**
- * ²ÊÆ±ÊµÌåÀà
+ * å½©ç¥¨å®ä½“ç±»
  * @author yanyj
- * @date 2016Äê7ÔÂ30ÈÕ
+ * @date 2016å¹´7æœˆ30æ—¥
  */  
 public class Ticket {
 
-	//²ÊÆ±ID
+	//å½©ç¥¨ID
 	private String ID;
-	//²ÊÆ±ÖÖÀà
+	//å½©ç¥¨ç§ç±»
 	private String clazz;
-	//²ÊÆ±ÀàĞÍ
+	//å½©ç¥¨ç±»å‹
 	private String type;
-	//¹º²ÊÊ±¼ä
+	//è´­å½©æ—¶é—´
 	private Date date;
-	//¹ºÂòÖÖÀà
+	//è´­ä¹°ç§ç±»
 	private String betType;
-	//¹ºÂò½ğ¶î
+	//è´­ä¹°é‡‘é¢
 	private float stake;
-	//Ö÷¶Ó
+	//ä¸»é˜Ÿ
 	private String team;
-	//¼´Ê±±È·Ö
+	//å³æ—¶æ¯”åˆ†
 	private String jsbf;
-	//½áÊø±È·Ö
+	//ç»“æŸæ¯”åˆ†
 	private String endScore;
-	//ÅâÂÊ
+	//èµ”ç‡
 	private float odds;
-	//¹ºÂò±ÈÂÊ
+	//è´­ä¹°æ¯”ç‡
 	private float gmbl;
-	//É¾³ı±êÖ¾
+	//åˆ é™¤æ ‡å¿—
 	private String deleteFlag;
 	
-	/**¹¹Ôì·½·¨*/
+	/**æ„é€ æ–¹æ³•*/
 	public Ticket() {
 	}
 
-	/**setter ºÍ getter·½·¨*/
+	/**setter å’Œ getteræ–¹æ³•*/
 	public String getID() {
 		return ID;
 	}

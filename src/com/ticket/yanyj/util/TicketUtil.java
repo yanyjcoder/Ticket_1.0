@@ -8,17 +8,17 @@ import java.util.List;
 import com.ticket.yanyj.emty.Ticket;
 
 /**
- * ²ÊÆ±¹¤¾ßÀà
+ * å½©ç¥¨å·¥å…·ç±»
  * @author yanyj
- * @date 2016Äê7ÔÂ30ÈÕ
+ * @date 2016å¹´7æœˆ30æ—¥
  */
 public class TicketUtil {
 
 	/**
-	 *½«²ÊÆ±×Ö·û´®×ª»»ÎªList<Ticket>¼¯ºÏ
+	 *å°†å½©ç¥¨å­—ç¬¦ä¸²è½¬æ¢ä¸ºList<Ticket>é›†åˆ
 	 * @author yanyj
 	 * @throws ParseException 
-	 * @date 2016Äê7ÔÂ30ÈÕ
+	 * @date 2016å¹´7æœˆ30æ—¥
 	 */
 	public static List<Ticket> convertStringToTicketMap(List<String> list) throws ParseException {
 		
@@ -40,7 +40,7 @@ public class TicketUtil {
 			case 1:
 				ticket.setBetType(list.get(i).trim());
 				break;
-			case 2://½«±ÈÂÊ£¬¼´Ê±±È·ÖºÍÅâÂÊ×¢ÈëÊµÌå
+			case 2://å°†æ¯”ç‡ï¼Œå³æ—¶æ¯”åˆ†å’Œèµ”ç‡æ³¨å…¥å®ä½“
 				info = list.get(i).split(" ");
 				ticket.setGmbl(Float.parseFloat(info[0]));
 				ticket.setJsbf(info[1].substring(0, info[1].length()));

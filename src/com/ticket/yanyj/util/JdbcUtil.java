@@ -17,18 +17,18 @@ public class JdbcUtil {
 	public static Connection createConnetion(String JDriver, String Dbstr, String Dbuser, String Dbpassword) {
 		  
 		try {
-			Class.forName(JDriver);// ¼ÓÔØÊı¾İ¿âÒıÇæ£¬·µ»Ø¸ø¶¨×Ö·û´®ÃûµÄÀà
-			log.info("Êı¾İ¿âÇı¶¯³É¹¦");
+			Class.forName(JDriver);// åŠ è½½æ•°æ®åº“é©±åŠ¨
+			log.info("æ•°æ®åº“é©±åŠ¨åŠ è½½æˆåŠŸï¼");
 		} catch (ClassNotFoundException e) {
-			log.info("¼ÓÔØÊı¾İ¿âÒıÇæÊ§°Ü");
+			log.info("æ•°æ®åº“é©±åŠ¨åŠ è½½å¤±è´¥ï¼");
 			log.info(e.getMessage());
 			return null;
 		}
 		try {
 			con = DriverManager.getConnection(Dbstr, Dbuser, Dbpassword);
-			log.info("Á¬½ÓÊı¾İ¿â³É¹¦");
+			log.info("æ•°æ®åº“è¿æ¥æˆåŠŸï¼");
 		} catch (SQLException e) {
-			log.info("Á¬½ÓÊı¾İ¿âÊ§°Ü");
+			log.info("æ•°æ®åº“è¿æ¥å¤±è´¥ï¼");
 			log.info(e.getMessage());
 			return null;
 		} 
@@ -48,9 +48,9 @@ public class JdbcUtil {
 		Statement st = null;
 		try {
 			st = conn.createStatement();
-			log.info("»ñÈ¡Statement³É¹¦");
+			log.info("åˆ›å»ºStatementæˆåŠŸï¼");
 		} catch (SQLException e) {
-			log.info("»ñÈ¡StatementÊ§°Ü");
+			log.info("åˆ›å»ºStatementå¤±è´¥ï¼");
 			log.info(e.getMessage());
 		}
 		
@@ -59,14 +59,14 @@ public class JdbcUtil {
 	
 	public static boolean closeConnetion(Connection con) {
 		if(con == null) {
-			log.info("Êı¾İ¿âÁ¬½ÓÎ´´ò¿ª");
+			log.info("æ•°æ®åº“æœªè¿æ¥ï¼");
 			return true;
 		}
 		try {
 			con.close();
-			log.info("¹Ø±ÕÊı¾İ¿â³É¹¦");
+			log.info("æ•°æ®åº“å·²æˆåŠŸå…³é—­ï¼");
 		} catch (SQLException e) {
-			log.info("¹Ø±ÕÊı¾İ¿âÊ§°Ü");
+			log.info("æ•°æ®åº“å…³é—­å¼‚å¸¸ï¼");
 			log.info(e.getMessage());
 		}
 		return true;

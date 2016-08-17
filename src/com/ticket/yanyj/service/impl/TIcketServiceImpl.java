@@ -13,9 +13,9 @@ public class TIcketServiceImpl implements TicketService {
 	private static TicketDAO ticketDAO = new TicketDAOImpl(); 
 
 	/**
-	 * ±£´æÊµÌå
+	 * ä¿å­˜å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public boolean save(Ticket ticket) throws Exception {
@@ -23,9 +23,9 @@ public class TIcketServiceImpl implements TicketService {
 	}
 
 	/**
-	 * ±£´æÈ«²¿ÊµÌå
+	 * ä¿å­˜å…¨éƒ¨å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public boolean saveAll(List<Ticket> ticketList) throws Exception {
@@ -33,9 +33,9 @@ public class TIcketServiceImpl implements TicketService {
 	}
 
 	/**
-	 * Í¨¹ıID»ñÈ¡²ÊÆ±ÊµÌå
+	 * é€šè¿‡IDè·å–å½©ç¥¨å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public Ticket get(String ID) throws Exception {
@@ -43,9 +43,9 @@ public class TIcketServiceImpl implements TicketService {
 	}
 
 	/**
-	 * ¸ù¾İÌõ¼şÉ¾Ñ¡
+	 * æ ¹æ®æ¡ä»¶åˆ é€‰
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public List<Ticket> getByCondition(Map<String, Object> condition) throws Exception {
@@ -53,9 +53,9 @@ public class TIcketServiceImpl implements TicketService {
 	}
 	
 	/**
-	 * ¸úĞÂ
+	 * è·Ÿæ–°
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ14ÈÕ
+	 * @date 2016å¹´8æœˆ14æ—¥
 	 */
 	@Override
 	public boolean update(Ticket ticket) throws Exception {

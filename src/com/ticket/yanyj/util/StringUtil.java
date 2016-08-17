@@ -7,6 +7,8 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import com.ticket.yanyj.emty.Ticket;
+
 public class StringUtil {
 	
 	static final Logger log = Logger.getLogger("StringUtil");
@@ -17,7 +19,7 @@ public class StringUtil {
 		String[] strArr = sql.split("[?]");
 		StringBuilder sb = new StringBuilder();
 		if(strArr.length != args.size()) {
-			log.error(errMethod + "Õ¼Î»·ûÓë²ÎÊı²»Ò»ÖÂ£¡");
+			log.error(errMethod + "å‚æ•°ä¸å ä½ç¬¦ä¸ä¸€è‡´ï¼");
 			return null;
 		}
 		for(int i = 0; i < strArr.length; i++) {
@@ -29,9 +31,11 @@ public class StringUtil {
 	}
 	
 	/**
-	 * ÅĞ¶Ï×Ö·û´®²»Îª¿Õ
+	 * åˆ¤æ–­æ˜¯å¦ä¸ä¸ºç©º
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ17æ—¥
+	 * @param str
+	 * @return
 	 */
 	public static boolean isNotNull(String str) {
 		if(str == null || "".equals(str)) {
@@ -41,9 +45,9 @@ public class StringUtil {
 	} 
 	
 	/**
-	 * È¥³ı»»ĞĞ
+	 * å»é™¤ç©ºç™½ç¬¦
 	 * @author yanyj
-	 * @date 2016Äê7ÔÂ30ÈÕ
+	 * @date 2016å¹´7æœˆ30æ—¥
 	 */
 	public static List<String> removeSpaceCharater(String str) {
 		
@@ -55,9 +59,9 @@ public class StringUtil {
 	}
 	
 	/**
-	 * È¥³ı×Ö·ûÊı×éÖĞ¿Õ×Ö·û´®
+	 * å»é™¤ç©ºå­—ç¬¦ä¸²
 	 * @author yanyj
-	 * @date 2016Äê7ÔÂ30ÈÕ
+	 * @date 2016å¹´7æœˆ30æ—¥
 	 */
 	public static List<String> removeNullString(String[] strings) {
 		List<String> strList = new ArrayList<String>();
@@ -67,5 +71,42 @@ public class StringUtil {
 			}
 		}
 		return strList;
+	}
+	
+	/**
+	 * è½¬æ¢æˆåˆ†é¡µçš„JSon
+	 * @author yanyj
+	 * @date 2016å¹´8æœˆ17æ—¥
+	 * @return
+	 */
+	public static String convertToJsonQueryPara(List<Ticket> tickets, String pageStr, String rowsStr) {
+		int totalRecord = tickets.size();
+		int page = Integer.parseInt(pageStr);
+		int rows = Integer.parseInt(rowsStr);
+		int totalPage = totalRecord % rows == 0 ? totalRecord / rows : totalRecord / rows + 1;
+		int index = (page - 1) * rows;// å¼€å§‹è®°å½•æ•°
+		int pageSize = rows;
+
+		String json = "{\"total\": \"" + totalPage + "\", \"page\": \"" + page + "\", \"records\": \"" 
+					+ totalRecord + "\", \"rows\": [";
+		for ( int i = index; i < pageSize + index && i < totalRecord; i++) {
+				Ticket ticket = tickets.get(i);
+				json +=	"{\"ID\": \"" + ticket.getID() 
+					+ "\",\"class\": \"" + ticket.getClazz() 
+					+ "\",\"betType\": \"" + ticket.getBetType() 
+					+ "\",\"endScore\": \"" + ticket.getEndScore() 
+					+ "\",\"gmbl\": \"" + ticket.getGmbl() 
+					+ "\",\"jsbf\": \"" + ticket.getJsbf().substring(1, ticket.getJsbf().length()-1)
+					+ "\",\"odds\": \"" + ticket.getOdds()
+					+ "\",\"stake\": \"" + ticket.getStake()
+					+ "\",\"team\": \"" + ticket.getTeam()
+					+ "\",\"type\": \"" + ticket.getType()
+					+ "\",\"date\": \"" + ticket.getDate().toString()+"\"}";
+			if(i != pageSize + index - 1 && i != totalRecord - 1) {
+				json += ",";
+			}
+		}
+		json += "]}";
+		return json;
 	}
 }

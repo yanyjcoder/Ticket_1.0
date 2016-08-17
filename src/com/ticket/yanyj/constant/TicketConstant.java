@@ -1,19 +1,19 @@
 package com.ticket.yanyj.constant;
 
 /**
- * ³£ÁÁÀà
+ * å¸¸é‡ç±»
  * @author yanyj
- * @date 2016Äê8ÔÂ12ÈÕ
+ * @date 2016å¹´8æœˆ12æ—¥
  */
 public class TicketConstant {
 
-	//Êı¾İ¿âÇı¶¯
+	//æ•°æ®åº“è¿æ¥å¸¸é‡
 	public static final String STR_JDRIVER="com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	public static final String DB_STR="jdbc:sqlserver://121.40.167.171:1433;DatabaseName=ticket_test";
 	public static final String DB_USER="yanyj";
 	public static final String DB_PASSWORD="jun";
-	//Î´É¾³ı
+	//æœªåˆ é™¤
 	public static final String DeleteFlag_NO = "0";
-	//ÒÑÉ¾³ı
+	//å·²åˆ é™¤
 	public static final String DeleteFlag_YES = "1";
 }

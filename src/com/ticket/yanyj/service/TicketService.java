@@ -6,44 +6,44 @@ import java.util.Map;
 import com.ticket.yanyj.emty.Ticket;
 
 /**
- * TicketService½Ó¿Ú
+ * TicketServiceæ¥å£
  * @author yanyj
- * @date 2016Äê8ÔÂ13ÈÕ
+ * @date 2016å¹´8æœˆ13æ—¥
  */
 public interface TicketService {
 
 	/**
-	 * ±£´æÊµÌå
+	 * ä¿å­˜å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public boolean save(Ticket ticket) throws Exception;
 	
 	/**
-	 * ±£´æÈ«²¿ÊµÌå
+	 * ä¿å­˜å…¨éƒ¨å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public boolean saveAll(List<Ticket> ticketList) throws Exception;
 	
 	/**
-	 * Í¨¹ıID»ñÈ¡²ÊÆ±ÊµÌå
+	 * é€šè¿‡IDè·å–å½©ç¥¨å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public Ticket get(String ID) throws Exception;
 	
 	/**
-	 * ¸ù¾İÌõ¼şÉ¾Ñ¡
+	 * æ ¹æ®æ¡ä»¶åˆ é€‰
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	public List<Ticket> getByCondition(Map<String, Object> condition) throws Exception;
 	
 	/**
-	 * ¸úĞÂ
+	 * è·Ÿæ–°
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ14ÈÕ
+	 * @date 2016å¹´8æœˆ14æ—¥
 	 */
 	public boolean update(Ticket ticket) throws Exception;
 }

@@ -10,64 +10,64 @@ public class Test {
 
 	 public static void main(String[] args) 
 	 {
-	  String JDriver="com.microsoft.sqlserver.jdbc.SQLServerDriver";//SQLÊı¾İ¿âÒıÇæ
-	  String connectDB="jdbc:sqlserver://121.40.167.171:1433;DatabaseName=ticket_test";//Êı¾İÔ´
+	  String JDriver="com.microsoft.sqlserver.jdbc.SQLServerDriver";//SQLæ•°æ®åº“å¼•æ“
+	  String connectDB="jdbc:sqlserver://121.40.167.171:1433;DatabaseName=ticket_test";//æ•°æ®æº
 	  
 	  try
 	  {
-	   Class.forName(JDriver);//¼ÓÔØÊı¾İ¿âÒıÇæ£¬·µ»Ø¸ø¶¨×Ö·û´®ÃûµÄÀà
+	   Class.forName(JDriver);//åŠ è½½æ•°æ®åº“å¼•æ“ï¼Œè¿”å›ç»™å®šå­—ç¬¦ä¸²åçš„ç±»
 	  }catch(ClassNotFoundException e)
 	  {
 	   //e.printStackTrace();
-	   System.out.println("¼ÓÔØÊı¾İ¿âÒıÇæÊ§°Ü");
+	   System.out.println("åŠ è½½æ•°æ®åº“å¼•æ“å¤±è´¥");
 	   System.exit(0);
 	  }     
-	  System.out.println("Êı¾İ¿âÇı¶¯³É¹¦");
+	  System.out.println("æ•°æ®åº“é©±åŠ¨æˆåŠŸ");
 	  
 	  try
 	  {
 	   String user="yanyj";
 	   String password="jun";
-	   Connection con=DriverManager.getConnection(connectDB,user,password);//Á¬½ÓÊı¾İ¿â¶ÔÏó
-	   System.out.println("Á¬½ÓÊı¾İ¿â³É¹¦");
-	   Statement stmt=con.createStatement();//´´½¨SQLÃüÁî¶ÔÏó
+	   Connection con=DriverManager.getConnection(connectDB,user,password);//è¿æ¥æ•°æ®åº“å¯¹è±¡
+	   System.out.println("è¿æ¥æ•°æ®åº“æˆåŠŸ");
+	   Statement stmt=con.createStatement();//åˆ›å»ºSQLå‘½ä»¤å¯¹è±¡
 	   
-	   //´´½¨±í
-	   System.out.println("¿ªÊ¼´´½¨±í");
-	   String query="create table TABLE2(ID NCHAR(10) primary key,NAME NCHAR(10))";//´´½¨±íSQLÓï¾ä
-	   stmt.executeUpdate(query);//Ö´ĞĞSQLÃüÁî¶ÔÏó
-	   System.out.println("±í´´½¨³É¹¦");
+	   //åˆ›å»ºè¡¨
+	   System.out.println("å¼€å§‹åˆ›å»ºè¡¨");
+	   String query="create table TABLE2(ID NCHAR(10) primary key,NAME NCHAR(10))";//åˆ›å»ºè¡¨SQLè¯­å¥
+	   stmt.executeUpdate(query);//æ‰§è¡ŒSQLå‘½ä»¤å¯¹è±¡
+	   System.out.println("è¡¨åˆ›å»ºæˆåŠŸ");
 	      
-	   //ÊäÈëÊı¾İ
-	   System.out.println("¿ªÊ¼²åÈëÊı¾İ");
-	   String a1="INSERT INTO TABLE1 VALUES('1','Ğñ¸ç')";//²åÈëÊı¾İSQLÓï¾ä
-	   String a2="INSERT INTO TABLE1 VALUES('2','Î°¸ç')";
-	   String a3="INSERT INTO TABLE1 VALUES('3','ÕÅ¸ç')";
-	   stmt.executeUpdate(a1);//Ö´ĞĞSQLÃüÁî¶ÔÏó
+	   //è¾“å…¥æ•°æ®
+	   System.out.println("å¼€å§‹æ’å…¥æ•°æ®");
+	   String a1="INSERT INTO TABLE1 VALUES('1','æ—­å“¥')";//æ’å…¥æ•°æ®SQLè¯­å¥
+	   String a2="INSERT INTO TABLE1 VALUES('2','ä¼Ÿå“¥')";
+	   String a3="INSERT INTO TABLE1 VALUES('3','å¼ å“¥')";
+	   stmt.executeUpdate(a1);//æ‰§è¡ŒSQLå‘½ä»¤å¯¹è±¡
 	   stmt.executeUpdate(a2);   
 	   stmt.executeUpdate(a3);
-	   System.out.println("²åÈëÊı¾İ³É¹¦");
+	   System.out.println("æ’å…¥æ•°æ®æˆåŠŸ");
 	   
-	   //¶ÁÈ¡Êı¾İ
-	   System.out.println("¿ªÊ¼¶ÁÈ¡Êı¾İ");
-	   ResultSet rs=stmt.executeQuery("SELECT * FROM TABLE1");//·µ»ØSQLÓï¾ä²éÑ¯½á¹û¼¯(¼¯ºÏ)
-	   //Ñ­»·Êä³öÃ¿Ò»Ìõ¼ÇÂ¼
+	   //è¯»å–æ•°æ®
+	   System.out.println("å¼€å§‹è¯»å–æ•°æ®");
+	   ResultSet rs=stmt.executeQuery("SELECT * FROM TABLE1");//è¿”å›SQLè¯­å¥æŸ¥è¯¢ç»“æœé›†(é›†åˆ)
+	   //å¾ªç¯è¾“å‡ºæ¯ä¸€æ¡è®°å½•
 	   while(rs.next())
 	   {
-	    //Êä³öÃ¿¸ö×Ö¶Î
+	    //è¾“å‡ºæ¯ä¸ªå­—æ®µ
 	    System.out.println(rs.getString("ID")+"\t"+rs.getString("NAME"));
 	   }
-	   System.out.println("¶ÁÈ¡Íê±Ï");
-	   String queryde="drop table TABLE1";//É¾³ı±íSQLÓï¾ä
-	   stmt.executeUpdate(queryde);//Ö´ĞĞSQLÃüÁî¶ÔÏó
-	   //¹Ø±ÕÁ¬½Ó
-	   stmt.close();//¹Ø±ÕÃüÁî¶ÔÏóÁ¬½Ó
-	   con.close();//¹Ø±ÕÊı¾İ¿âÁ¬½Ó
+	   System.out.println("è¯»å–å®Œæ¯•");
+	   String queryde="drop table TABLE1";//åˆ é™¤è¡¨SQLè¯­å¥
+	   stmt.executeUpdate(queryde);//æ‰§è¡ŒSQLå‘½ä»¤å¯¹è±¡
+	   //å…³é—­è¿æ¥
+	   stmt.close();//å…³é—­å‘½ä»¤å¯¹è±¡è¿æ¥
+	   con.close();//å…³é—­æ•°æ®åº“è¿æ¥
 	  }
 	  catch(SQLException e)
 	  {
 	   e.printStackTrace();
-	   //System.out.println("Êı¾İ¿âÁ¬½Ó´íÎó");
+	   //System.out.println("æ•°æ®åº“è¿æ¥é”™è¯¯");
 	   System.exit(0);
 	  }
 	 }

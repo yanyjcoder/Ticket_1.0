@@ -21,9 +21,9 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	private static final Logger log = Logger.getLogger("TicketDAOImpl");
 	
 	/**
-	 * ±£´æÊµÌå
+	 * ä¿å­˜å•ä¸ªå®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public boolean save(Ticket ticket) throws Exception {
@@ -48,9 +48,9 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	}
 
 	/**
-	 * ±£´æÊµÌå
+	 * ä¿å­˜å…¨éƒ¨å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public boolean saveAll(List<Ticket> ticketlist) throws Exception {
@@ -59,18 +59,18 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 			try {
 				save(ticket);
 			} catch(SQLException s) {
-				log.error(" [saveAll] ±£´æÊµÌåÊ§°Ü£¬ÊµÌåÎª" + ticket.getID());
+				log.error(" [saveAll] æœªæˆåŠŸä¿å­˜çš„å®ä½“ä¸º" + ticket.getID());
 				log.error(s.getMessage());
 			}
 		}
-		log.info(" [success] È«²¿³É¹¦£¡");
+		log.info(" [success] å·²æˆåŠŸä¿å­˜ï¼");
 		return true;
 	}
 	
 	/**
-	 * Í¨¹ıID»ñÈ¡²ÊÆ±ÊµÌå
+	 * æ ¹æ®IdæŸ¥è¯¢
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public Ticket get(String ID) throws Exception {
@@ -83,9 +83,9 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	};
 	
 	/**
-	 * ¸ù¾İÌõ¼şÉ¾Ñ¡
+	 * æ ¹æ®æ¡ä»¶æŸ¥è¯¢
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ13ÈÕ
+	 * @date 2016å¹´8æœˆ13æ—¥
 	 */
 	@Override
 	public List<Ticket> getByCondition(Map<String, Object> condition) throws Exception {
@@ -94,7 +94,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		StringBuilder sql = new StringBuilder("select * from t_ticket where deleteFlag = ?");
 		args.add(TicketConstant.DeleteFlag_NO);
 		if(condition != null ) {
-			//½«É¾Ñ¡Ìõ¼ş¸øÉ¾Ñ¡³öÀ´
+			//å¡«å……æŸ¥è¯¢æ¡ä»¶
 			String ID = (String) condition.get("ID");
 			String clazz = (String) condition.get("class");
 			String betType = (String) condition.get("betType");
@@ -155,9 +155,9 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	}
 	
 	/**
-	 * ¸úĞÂ
+	 * æ›´æ–°å®ä½“
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ14ÈÕ
+	 * @date 2016å¹´8æœˆ14æ—¥
 	 */
 	@Override
 	public boolean update(Ticket ticket) throws Exception {
@@ -181,9 +181,9 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	}
 
 	/**
-	 * É¾³ı
+	 * åˆ é™¤
 	 * @author yanyj
-	 * @date 2016Äê8ÔÂ14ÈÕ
+	 * @date 2016å¹´8æœˆ14æ—¥
 	 */
 	@Override
 	public boolean delete(String ID) throws Exception {
