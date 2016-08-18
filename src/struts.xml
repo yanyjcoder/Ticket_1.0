@@ -9,6 +9,10 @@
 			method="list">
 			<result name="list">index.jsp</result>
 		</action>
+		<action name="update" class="com.ticket.yanyj.action.TicketAction"
+			method="update">
+			<result name="update">index.jsp</result>
+		</action>
 		<action name="link" class="com.ticket.yanyj.action.TicketAction"
 			method="link">
 			<result name="success">/WEB-INF/jsp/list.jsp</result>

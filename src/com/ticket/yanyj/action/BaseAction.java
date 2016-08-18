@@ -8,6 +8,8 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.ticket.yanyj.service.TicketService;
+import com.ticket.yanyj.service.impl.TIcketServiceImpl;
 
 public class BaseAction extends ActionSupport{
  private static final Logger logger = Logger.getLogger("");
@@ -17,6 +19,7 @@ public class BaseAction extends ActionSupport{
 	private static final long serialVersionUID = 1L;
 	private String page ;
 	private String rows ;
+	protected static TicketService ticketService = new TIcketServiceImpl();
 	public String getPage() {
 		return page;
 	}
@@ -51,5 +54,13 @@ public class BaseAction extends ActionSupport{
 	  {
 	    return render(text, "text/plain;charset=UTF-8");
 	  }
+
+	public static TicketService getTicketService() {
+		return ticketService;
+	}
+
+	public static void setTicketService(TicketService ticketService) {
+		BaseAction.ticketService = ticketService;
+	}
 
 }

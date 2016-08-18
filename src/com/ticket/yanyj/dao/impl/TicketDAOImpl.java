@@ -177,8 +177,8 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		args.add(ticket.getTeam());
 		args.add(ticket.getType());
 		args.add(ticket.getDeleteFlag());
-		args.add(ticket.getID());
 		args.add(ticket.getProfit());
+		args.add(ticket.getID());
 		return executeUpdate(sql,args) > 0;
 	}
 

@@ -6,9 +6,12 @@ import com.ticket.yanyj.emty.Ticket;
 import com.ticket.yanyj.service.TicketService;
 import com.ticket.yanyj.service.impl.TIcketServiceImpl;
 import com.ticket.yanyj.util.StringUtil;
+import com.ticket.yanyj.util.TicketUtil;
 
 public class TicketAction extends BaseAction{
 	private String ticketInfo;
+	private String ID;
+	private String endScore;
 	/**
 	 * 
 	 */
@@ -20,7 +23,15 @@ public class TicketAction extends BaseAction{
 		//ts.saveAll(tickets);
 		String result = StringUtil.convertToJsonQueryPara(tickets, getPage(), getRows());
 		this.renderText(result);
-		System.out.println("JSON" + result);
+		return null;
+	}
+	public String update() throws Exception {
+		Ticket ticket =  ticketService.get(ID);
+		ticket.setEndScore(endScore);
+		float profit = TicketUtil.calutProfit(ticket);
+		System.out.println(profit);
+		ticket.setProfit(profit);
+		ticketService.update(ticket);
 		return null;
 	}
 
@@ -34,5 +45,17 @@ public class TicketAction extends BaseAction{
 
 	public void setTicketInfo(String ticketInfo) {
 		this.ticketInfo = ticketInfo;
+	}
+	public String getID() {
+		return ID;
+	}
+	public void setID(String iD) {
+		ID = iD;
+	}
+	public String getEndScore() {
+		return endScore;
+	}
+	public void setEndScore(String endScore) {
+		this.endScore = endScore;
 	}
 }

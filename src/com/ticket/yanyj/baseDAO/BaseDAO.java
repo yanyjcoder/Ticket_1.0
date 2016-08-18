@@ -61,6 +61,7 @@ public class BaseDAO {
 				ticket.setStake(rs.getFloat("stake"));
 				ticket.setTeam(rs.getString("team"));
 				ticket.setType(rs.getString("type"));
+				ticket.setDeleteFlag(rs.getString("deleteFlag"));
 				ticketLst.add(ticket);
 			
 		}

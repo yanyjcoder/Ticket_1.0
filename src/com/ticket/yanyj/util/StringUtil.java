@@ -92,6 +92,7 @@ public class StringUtil {
 		for ( int i = index; i < pageSize + index && i < totalRecord; i++) {
 				Ticket ticket = tickets.get(i);
 				json +=	"{\"ID\": \"" + ticket.getID() 
+					+ "\",\"id\": \"" + (i + 1) 
 					+ "\",\"class\": \"" + ticket.getClazz() 
 					+ "\",\"betType\": \"" + ticket.getBetType() 
 					+ "\",\"endScore\": \"" + ticket.getEndScore() 
