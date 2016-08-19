@@ -25,16 +25,43 @@ public class TicketAction extends BaseAction{
 		this.renderText(result);
 		return null;
 	}
+	
+	/**
+	 * 跟新利润
+	 * @author yanyj
+	 * @date 2016年8月19日
+	 * @描述
+	 * @思路
+	 * @return
+	 * @throws Exception
+	 */
 	public String update() throws Exception {
 		Ticket ticket =  ticketService.get(ID);
 		ticket.setEndScore(endScore);
 		float profit = TicketUtil.calutProfit(ticket);
-		System.out.println(profit);
 		ticket.setProfit(profit);
 		ticketService.update(ticket);
 		return null;
 	}
-
+	
+	/**
+	 * 跟新利润
+	 * @author yanyj
+	 * @date 2016年8月19日
+	 * @描述
+	 * @思路
+	 * @return
+	 * @throws Exception
+	 */
+	public String save() throws Exception {
+		List<Ticket> ticket = TicketUtil.convertStringToTicketMap(StringUtil.removeSpaceCharater(ticketInfo));
+		ticketService.saveAll(ticket);
+		List<Ticket> tickets = ticketService.getByCondition(null);
+		String result = StringUtil.convertToJsonQueryPara(tickets, getPage(), getRows());
+		this.renderText(result);
+		return null;
+	}
+	
 	public String link() throws Exception {
 		return SUCCESS;
 	}

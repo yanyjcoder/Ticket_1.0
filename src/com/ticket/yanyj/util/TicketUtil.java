@@ -72,49 +72,51 @@ public class TicketUtil {
 				} else {
 					profit = 0.0f - stake;
 				}
-			} else if ((scoreNum - gmbl) <= 0) {
+			} else if ((scoreNum - gmbl) < 0) {
 				if (ticket.getBetType().indexOf("大") != -1) {
 					profit = 0.0f - stake;
 				} else {
 					profit = odds * stake;
 				}
+			} else {
+				profit = 0.0f;
 			}
 			break;
 		case 1://0.75 的情况
 			if (ticket.getBetType().indexOf("大") != -1) {
-				if((scoreNum - gmbl) < 0.0f) {
-					profit = 0.0f - stake;	
+				if((scoreNum - gmbl) == 0.25f) {
+					profit = odds * (stake / 2.0f);
 				} else if ((scoreNum - gmbl) > 0.5f) {
 					profit = odds * stake;
 				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit = odds * (stake / 2.0f);
+					profit = 0.0f - stake;	
 				}
 			} else {
-				if((scoreNum - gmbl) < 0.0f) {
-					profit = odds * stake;
+				if((scoreNum - gmbl)  == 0.25f) {
+					profit =  0.0f - (stake / 2.0f);
 				} else if ((scoreNum - gmbl) > 0.5f) {
 					profit = 0.0f - stake;
 				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit =  0.0f - (stake / 2.0f);
+					profit = odds * stake;
 				}
 			}
 			break;
 		case 2:
 			if (ticket.getBetType().indexOf("大") != -1) {
-				if((scoreNum - gmbl) < 0) {
-					profit = 0.0f - stake;	
+				if((scoreNum - gmbl) == -0.25f) {
+					profit =  0.0f - (stake / 2.0f);
 				} else if ((scoreNum - gmbl) > 0.5f) {
 					profit = odds * stake;
 				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit =  0.0f - (stake / 2.0f);
+					profit = 0.0f - stake;	
 				}
 			} else {
-				if((scoreNum - gmbl) < 0.0f) {
-					profit = odds * stake;
+				if((scoreNum - gmbl) == -0.25f) {
+					profit = odds * (stake / 2.0f);
 				} else if ((scoreNum - gmbl) > 0.5f) {
 					profit = 0.0f - stake;
 				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit = odds * (stake / 2.0f);
+					profit = odds * stake;
 				}
 			}
 			break;

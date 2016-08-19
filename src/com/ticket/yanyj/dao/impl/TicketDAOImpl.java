@@ -79,8 +79,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		List<Object> lst = new ArrayList<Object>();
 		String sql = " select * from t_ticket where ID = ?";
 		lst.add(ID);
-		executeQuery(sql, lst);
-		return executeQuery(sql, lst).get(0);
+		return executeQuery(sql, lst, null).get(0);
 	};
 	
 	/**
@@ -152,7 +151,9 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 				args.add(type);
 			}
 		}
-		return executeQuery(sql.toString(), args);
+		List<Object> order =  new ArrayList<Object>();
+		order.add("date");
+		return executeQuery(sql.toString(), args, order);
 	}
 	
 	/**

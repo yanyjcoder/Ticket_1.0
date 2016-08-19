@@ -11,9 +11,9 @@ import com.ticket.yanyj.util.JdbcUtil;
 import com.ticket.yanyj.util.StringUtil;
 
 /**
- * DAOµÄ¶¥²ãÀà£¬·â×°Ò»Ğ©³£ÓÃµÄ·½·¨ºÍÊôĞÔ
+ * DAOçš„é¡¶å±‚ç±»ï¼Œå°è£…ä¸€äº›å¸¸ç”¨çš„æ–¹æ³•å’Œå±æ€§
  * @author yanyj
- * @date 2016Äê8ÔÂ12ÈÕ
+ * @date 2016å¹´8æœˆ12æ—¥
  * 
  */
 public class BaseDAO {
@@ -23,7 +23,7 @@ public class BaseDAO {
 	
 	public int executeUpdate(String query, List<Object> args) throws Exception {
 		
-		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args));
+		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args, null));
 		return pst.executeUpdate();
 	}
 	
@@ -34,7 +34,7 @@ public class BaseDAO {
 	}
 	
 	public boolean execute(String query, List<Object> args) throws Exception {
-		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args));
+		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args,null));
 		return pst.execute();
 	}
 	
@@ -43,8 +43,8 @@ public class BaseDAO {
 		return pst.execute();
 	}
 	
-	public List<Ticket> executeQuery(String query, List<Object> args) throws Exception {
-		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args));
+	public List<Ticket> executeQuery(String query, List<Object> args, List<Object> order) throws Exception {
+		PreparedStatement pst = con.prepareStatement(StringUtil.replaceSql(query, args, order));
 		ResultSet rs = pst.executeQuery();
 		Ticket ticket = null;
 		List<Ticket> ticketLst = new ArrayList<>();
@@ -62,6 +62,7 @@ public class BaseDAO {
 				ticket.setTeam(rs.getString("team"));
 				ticket.setType(rs.getString("type"));
 				ticket.setDeleteFlag(rs.getString("deleteFlag"));
+				ticket.setProfit(rs.getFloat("profit"));
 				ticketLst.add(ticket);
 			
 		}
@@ -87,6 +88,7 @@ public class BaseDAO {
 				ticket.setStake(rs.getFloat("stake"));
 				ticket.setTeam(rs.getString("team"));
 				ticket.setType(rs.getString("type"));
+				ticket.setProfit(rs.getFloat("profit"));
 				ticketLst.add(ticket);
 			}
 		}

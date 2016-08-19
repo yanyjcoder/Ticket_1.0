@@ -17,6 +17,10 @@
 			method="link">
 			<result name="success">/WEB-INF/jsp/list.jsp</result>
 		</action>
+		<action name="save" class="com.ticket.yanyj.action.TicketAction"
+			method="save">
+			<result name="success">/WEB-INF/jsp/list.jsp</result>
+		</action>
 	</package>
 
 </struts>

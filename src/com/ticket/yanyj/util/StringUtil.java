@@ -14,19 +14,27 @@ public class StringUtil {
 	static final Logger log = Logger.getLogger("StringUtil");
 	private static String errMethod = "";
 	
-	public static String replaceSql(String sql, List<Object> args) {
+	public static String replaceSql(String sql, List<Object> args, List<Object> order) {
 		errMethod = "[replaceSql] ";
+		int count = 0;
+		for(int j = 0; j < sql.length(); j++) {
+			if(sql.charAt(j) == '?') {
+				count ++;
+			}
+		}
 		String[] strArr = sql.split("[?]");
 		StringBuilder sb = new StringBuilder();
-		if(strArr.length != args.size()) {
+		if(count != args.size()) {
 			log.error(errMethod + "参数与占位符不一致！");
 			return null;
 		}
-		for(int i = 0; i < strArr.length; i++) {
+		for(int i = 0; i < count; i++) {
 			sb.append(strArr[i]);
 			sb.append("'" + args.get(i) + "'");
 		}
-		
+		if(order  != null ) {
+			sb.append(" order by " + order.get(0) + " desc");
+		}
 		return sb.toString();
 	}
 	

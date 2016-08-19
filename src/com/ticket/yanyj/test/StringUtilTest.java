@@ -19,7 +19,7 @@ public class StringUtilTest {
 		list.add(1);
 		list.add("参数2");
 		list.add("参数2");
-		System.out.println(StringUtil.replaceSql(sql, list));
+		System.out.println(StringUtil.replaceSql(sql, list, null));
 	}
 	
 	@Test
