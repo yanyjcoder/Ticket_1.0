@@ -63,6 +63,7 @@ public class BaseDAO {
 				ticket.setType(rs.getString("type"));
 				ticket.setDeleteFlag(rs.getString("deleteFlag"));
 				ticket.setProfit(rs.getFloat("profit"));
+				ticket.setStatus(Integer.parseInt(rs.getString("status").trim()));
 				ticketLst.add(ticket);
 			
 		}
@@ -89,6 +90,7 @@ public class BaseDAO {
 				ticket.setTeam(rs.getString("team"));
 				ticket.setType(rs.getString("type"));
 				ticket.setProfit(rs.getFloat("profit"));
+				ticket.setStatus(Integer.parseInt(rs.getString("status")));
 				ticketLst.add(ticket);
 			}
 		}

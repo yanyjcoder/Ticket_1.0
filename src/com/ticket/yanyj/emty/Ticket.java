@@ -35,6 +35,8 @@ public class Ticket {
 	private String deleteFlag;
 	//盈利
 	private float profit;
+	//状态
+	private int status;
 	
 	/**构造方法*/
 	public Ticket() {
@@ -143,6 +145,14 @@ public class Ticket {
 
 	public void setProfit(float profit) {
 		this.profit = profit;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	
 	

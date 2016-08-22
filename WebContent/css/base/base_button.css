@@ -172,7 +172,7 @@
     border-bottom-style:solid;
     border-left-style:solid;
     width:1000px;
-    height:100px;
+    height:50px;
 }
 .mytxt:focus {
      border: 1px solid #fafafa;

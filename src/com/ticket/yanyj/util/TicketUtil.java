@@ -184,4 +184,56 @@ public class TicketUtil {
 		return tickets;
 
 	}
+	
+	
+	/**
+	 * 新的字符串数组转换为Ticket集合
+	 * @author yanyj
+	 * @date 2016年8月22日
+	 * @描述
+	 * @思路
+	 * @param ticketInfo
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<Ticket> convertToTickets(String[] ticketInfo) throws Exception{
+		List<Ticket> ticketList = new ArrayList<>();
+		Ticket ticket = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		int infoLgt = ticketInfo.length;
+		for (int i = 0; i < infoLgt; i++) {
+			if (ticketInfo[i].equals("足球")) {
+				ticket = new Ticket();
+				ticket.setClazz(ticketInfo[i].trim());
+				i = i + 2;
+				ticket.setType(ticketInfo[i].trim());
+				i = i + 1;
+				ticket.setBetType(ticketInfo[i].trim());
+				i = i + 1;
+				ticket.setGmbl(Float.parseFloat(ticketInfo[i].trim()));
+				i = i + 1;
+				ticket.setJsbf(ticketInfo[i].trim().substring(0, ticketInfo[i].length()));
+				i = i + 1;
+				ticket.setOdds(Float.parseFloat(ticketInfo[i].trim().substring(1)));
+				i = i + 1;
+				ticket.setStake(Float.parseFloat(ticketInfo[i].trim()));
+				i = i + 1;
+				String teamStr = ticketInfo[i].trim();
+				while (!ticketInfo[i + 1].contains("ID:")) {
+					i ++;
+					teamStr += " " + ticketInfo[i].trim();
+				}
+				ticket.setTeam(teamStr.trim());
+				i = i + 1;
+				ticket.setID(ticketInfo[i].substring(3, ticketInfo[i].length() - 3).trim());
+				i = i + 1;
+				String dateStr = ticketInfo[i].trim() + " " + ticketInfo[i + 2].trim();
+				ticket.setDate(sdf.parse(dateStr.replaceAll("/", "-")));
+				
+				ticketList.add(ticket);
+				}
+		}
+		
+		return ticketList;
+	}
 }

@@ -28,7 +28,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	@Override
 	public boolean save(Ticket ticket) throws Exception {
 		
-		StringBuilder sql = new StringBuilder("insert into t_ticket values(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		StringBuilder sql = new StringBuilder("insert into t_ticket values(?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 		PreparedStatement pst = getCon().prepareStatement(sql.toString());
 		pst.setString(1, ticket.getID());
 		pst.setString(2, ticket.getClazz());
@@ -44,6 +44,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		pst.setFloat(11, ticket.getGmbl());
 		pst.setString(12, "0");
 		pst.setFloat(13,ticket.getProfit());
+		pst.setString(14,"0");
 		
 		return pst.executeUpdate() != -1 ? true : false;
 	}
@@ -152,6 +153,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 			}
 		}
 		List<Object> order =  new ArrayList<Object>();
+		order.add("status");
 		order.add("date");
 		return executeQuery(sql.toString(), args, order);
 	}
@@ -164,7 +166,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 	@Override
 	public boolean update(Ticket ticket) throws Exception {
 		String sql = "update t_ticket set class = ?,betType = ?,date = ?,endScore = ?,"
-				+ "gmbl = ?,jsbf = ?,odds = ?,stake = ?,team = ?,type = ?, deleteFlag = ?,profit = ? where ID = ?";
+				+ "gmbl = ?,jsbf = ?,odds = ?,stake = ?,team = ?,type = ?, deleteFlag = ?, profit = ?, status = ? where ID = ?";
 		List<Object> args = new ArrayList<>();
 		args.add(ticket.getClazz());
 		args.add(ticket.getBetType());
@@ -179,6 +181,7 @@ public class TicketDAOImpl extends BaseDAO implements TicketDAO {
 		args.add(ticket.getType());
 		args.add(ticket.getDeleteFlag());
 		args.add(ticket.getProfit());
+		args.add("1");
 		args.add(ticket.getID());
 		return executeUpdate(sql,args) > 0;
 	}

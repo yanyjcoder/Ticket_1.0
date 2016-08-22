@@ -8,8 +8,11 @@ import java.util.List;
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
+import com.ticket.yanyj.dao.ProfitDAO;
 import com.ticket.yanyj.dao.TicketDAO;
+import com.ticket.yanyj.dao.impl.ProfitDAOImpl;
 import com.ticket.yanyj.dao.impl.TicketDAOImpl;
+import com.ticket.yanyj.emty.Profit;
 import com.ticket.yanyj.emty.Ticket;
 
 public class ServiceTest {
@@ -67,4 +70,14 @@ public class ServiceTest {
 		System.out.println(td.get("12").getDate());
 	}
 	
+	@Test
+	public void testProfit() throws Exception {
+		Profit profit = new Profit();
+		profit.setDate("2016-08-22");
+		profit.setBalance(0);
+		profit.setBet_amount(1);
+		profit.setBet_profit(0.5f);
+		ProfitDAO pd = new ProfitDAOImpl();
+		System.out.println(pd.get("2016-08-22").getBet_amount());
+	}
 }

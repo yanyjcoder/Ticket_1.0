@@ -8,10 +8,15 @@ import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionSupport;
+import com.ticket.yanyj.service.AccountService;
+import com.ticket.yanyj.service.ProfitService;
 import com.ticket.yanyj.service.TicketService;
+import com.ticket.yanyj.service.impl.AccountServiceImpl;
+import com.ticket.yanyj.service.impl.ProfitServiceImpl;
 import com.ticket.yanyj.service.impl.TIcketServiceImpl;
 
 public class BaseAction extends ActionSupport{
+	
  private static final Logger logger = Logger.getLogger("");
 	/**
 	 * 
@@ -20,6 +25,9 @@ public class BaseAction extends ActionSupport{
 	private String page ;
 	private String rows ;
 	protected static TicketService ticketService = new TIcketServiceImpl();
+	protected static ProfitService profitService = new ProfitServiceImpl();
+	protected static AccountService accountservice = new AccountServiceImpl();
+	
 	public String getPage() {
 		return page;
 	}

@@ -8,8 +8,9 @@ package com.ticket.yanyj.constant;
 public class TicketConstant {
 
 	//数据库连接常量
-	public static final String STR_JDRIVER="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	public static final String DB_STR="jdbc:sqlserver://121.40.167.171:1433;DatabaseName=ticket_test";
+//	public static final String STR_JDRIVER="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	public static final String STR_JDRIVER="net.sourceforge.jtds.jdbc.Driver";
+	public static final String DB_STR="jdbc:jtds:sqlserver://121.40.167.171:1433;DatabaseName=ticket_test";
 	public static final String DB_USER="yanyj";
 	public static final String DB_PASSWORD="jun";
 	//未删除

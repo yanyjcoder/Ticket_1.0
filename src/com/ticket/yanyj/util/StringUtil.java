@@ -33,7 +33,7 @@ public class StringUtil {
 			sb.append("'" + args.get(i) + "'");
 		}
 		if(order  != null ) {
-			sb.append(" order by " + order.get(0) + " desc");
+			sb.append(" order by " + order.get(0) + "," + order.get(1) + " desc");
 		}
 		return sb.toString();
 	}
@@ -63,8 +63,22 @@ public class StringUtil {
         Matcher m = p.matcher(str.trim());
         String dest = m.replaceAll("?");
 		
-        return removeNullString(dest.split("\\?"));
+        return removeNullString(dest.split(" "));
 	}
+	
+	/**
+	 * 按空格分隔字符串
+	 * @author yanyj
+	 * @date 2016年8月22日
+	 * @描述
+	 * @思路
+	 * @param str
+	 * @return
+	 */
+	public static String[] splitInfoBySpace(String str) {
+		return str.split(" ");
+	}
+	
 	
 	/**
 	 * 去除空字符串
@@ -111,6 +125,7 @@ public class StringUtil {
 					+ "\",\"team\": \"" + ticket.getTeam()
 					+ "\",\"type\": \"" + ticket.getType()
 					+ "\",\"date\": \"" + ticket.getDate().toString()
+					+ "\",\"status\": \"" + ticket.getStatus()
 					+ "\",\"profit\": \"" + ticket.getProfit()+"\"}";
 			if(i != pageSize + index - 1 && i != totalRecord - 1) {
 				json += ",";
