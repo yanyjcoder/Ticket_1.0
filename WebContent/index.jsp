@@ -58,7 +58,7 @@
                 <div title="ticket服务" data-options="iconCls:'icon-help'" style=" overflow:auto;padding:10px;">
                     <ul class="easyui-tree">
                         <li><a href="javascript:;" class="btn_menu" url="link.action">新建注单</a></li>
-                        <li><a href="javascript:;" class="btn_menu" url="apply.html">申请快递</a></li>
+                        <li><a href="javascript:;" class="btn_menu" url="linkAccount.action">账户管理</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="Replace_list.html">代填记录</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="replace_apply.html">代填申请</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="Audit_list.html">申请审批</a></li>

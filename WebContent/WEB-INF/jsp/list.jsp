@@ -230,13 +230,14 @@
 		var ticketInfo = $('#ticketInfo').val();
 		if (jQuery("#gridTable").jqGrid('setGridParam', {
 			url : "save.action?ticketInfo=" + ticketInfo,
-			datatype : 'json'
+			datatype : 'json', 
+			async: false
 
 		}).trigger('reloadGrid') != null ){
 		showprofitBy();
 			
 		}//重新载入
-		
+		showprofitBy();
 	}
 
 	function showprofitBy() {

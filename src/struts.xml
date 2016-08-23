@@ -5,6 +5,7 @@
 <struts>
 
 	<package name="default" namespace="/" extends="struts-default">
+		<!-- TicketAction 类方法-->
 		<action name="list" class="com.ticket.yanyj.action.TicketAction"
 			method="list" >
 			<result name="list">index.jsp</result>
@@ -24,6 +25,12 @@
 		<action name="getProfitInfo" class="com.ticket.yanyj.action.TicketAction"
 			method="getProfitInfo">
 			<result name="success">/WEB-INF/jsp/list.jsp</result>
+		</action>
+		
+		<!-- AccountAction 类方法-->
+		<action name="linkAccount" class="com.ticket.yanyj.action.AccountAction"
+			method="linkAccount">
+			<result name="success">/WEB-INF/jsp/account.jsp</result>
 		</action>
 	</package>
 

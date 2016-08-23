@@ -1,5 +1,6 @@
 package com.ticket.yanyj.dao.impl;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -23,8 +24,10 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 	@Override
 	public boolean changeAmount(float amount) throws Exception {
 		String sql = "update t_account set amount = ? where username= 'yanyj'";
+		BigDecimal amountBig = new BigDecimal(Float.toString(amount));
+		BigDecimal amountBigL = new BigDecimal(Float.toString(getAmount()));
 		PreparedStatement pst = getCon().prepareStatement(sql);
-		pst.setFloat(1, getAmount() + amount);
+		pst.setFloat(1, amountBigL.add(amountBig).floatValue());
 		
 		return pst.executeUpdate() > 0;
 	}

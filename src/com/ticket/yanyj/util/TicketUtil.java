@@ -1,5 +1,6 @@
 package com.ticket.yanyj.util;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,77 +54,79 @@ public class TicketUtil {
 	 * 计算大小球规则
 	 * @author yanyj
 	 * @date 2016年8月18日
-	 * @描述
+	 * @描述 BigDecimal 的方法  add +  subtract - multiply *    divide  /    remainder %  
 	 * @思路
 	 * @param gmblType
 	 * @param ticket
 	 * @return
 	 */
 	public static float culteSizeBall(int gmblType, int scoreNum, Ticket ticket) {
-		float profit = 0.0f;
-		float stake = ticket.getStake();
-		float gmbl = ticket.getGmbl();
-		float odds = ticket.getOdds();
+		BigDecimal profit = new BigDecimal("0.0");
+		BigDecimal stake = new BigDecimal(Float.toString(ticket.getStake()));
+		BigDecimal gmbl = new BigDecimal(Float.toString(ticket.getGmbl()));
+		BigDecimal odds = new BigDecimal(Float.toString(ticket.getOdds()));
+		BigDecimal scoreNumBig = new BigDecimal(scoreNum);
+		
 		switch (gmblType) {
 		case 0: // 0.5 和 1 的情况
-			if ((scoreNum - gmbl) > 0) {
+			if (scoreNumBig.subtract(gmbl).floatValue() > 0) {
 				if (ticket.getBetType().indexOf("大") != -1) {
-					profit = odds * stake;
+					profit = odds.multiply(stake);
 				} else {
-					profit = 0.0f - stake;
+					profit = new BigDecimal("0.0f").subtract(stake);
 				}
-			} else if ((scoreNum - gmbl) < 0) {
+			} else if (scoreNumBig.subtract(gmbl).floatValue() < 0) {
 				if (ticket.getBetType().indexOf("大") != -1) {
-					profit = 0.0f - stake;
+					profit =  new BigDecimal("0.0").subtract(stake);
 				} else {
-					profit = odds * stake;
+					profit = odds.multiply(stake);
 				}
 			} else {
-				profit = 0.0f;
+				profit = new BigDecimal("0.0");
 			}
 			break;
 		case 1://0.75 的情况
 			if (ticket.getBetType().indexOf("大") != -1) {
-				if((scoreNum - gmbl) == 0.25f) {
-					profit = odds * (stake / 2.0f);
-				} else if ((scoreNum - gmbl) > 0.5f) {
-					profit = odds * stake;
-				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit = 0.0f - stake;	
+				if(scoreNumBig.subtract(gmbl).floatValue() == 0.25f) {
+					profit = odds.multiply(stake.divide(new BigDecimal("2.0")));
+				} else if (scoreNumBig.subtract(gmbl).floatValue() > 0.5f) {
+					profit = odds.multiply(stake);
+				} else if (scoreNumBig.subtract(gmbl).floatValue() < 0.5f) {
+					profit = new BigDecimal("0.0").subtract(stake);	
 				}
 			} else {
-				if((scoreNum - gmbl)  == 0.25f) {
-					profit =  0.0f - (stake / 2.0f);
-				} else if ((scoreNum - gmbl) > 0.5f) {
-					profit = 0.0f - stake;
-				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit = odds * stake;
+				if(scoreNumBig.subtract(gmbl).floatValue()  == 0.25f) {
+					profit =  new BigDecimal("0.0").subtract(stake.divide(new BigDecimal("2.0")));
+				} else if (scoreNumBig.subtract(gmbl).floatValue() > 0.5f) {
+					profit = new BigDecimal("0.0").subtract(stake);
+				} else if (scoreNumBig.subtract(gmbl).floatValue() < 0.5f) {
+					profit = odds.multiply(stake);
 				}
 			}
 			break;
 		case 2:
 			if (ticket.getBetType().indexOf("大") != -1) {
-				if((scoreNum - gmbl) == -0.25f) {
-					profit =  0.0f - (stake / 2.0f);
-				} else if ((scoreNum - gmbl) > 0.5f) {
-					profit = odds * stake;
-				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit = 0.0f - stake;	
+				if(scoreNumBig.subtract(gmbl).floatValue() == -0.25f) {
+					profit = new BigDecimal("0.0").subtract(stake.divide(new BigDecimal("2.0")));
+				} else if (scoreNumBig.subtract(gmbl).floatValue() > 0.5f) {
+					profit = odds.multiply(stake);
+				} else if (scoreNumBig.subtract(gmbl).floatValue() < 0.5f) {
+					profit = new BigDecimal("0.0").subtract(stake);	
 				}
 			} else {
-				if((scoreNum - gmbl) == -0.25f) {
-					profit = odds * (stake / 2.0f);
-				} else if ((scoreNum - gmbl) > 0.5f) {
-					profit = 0.0f - stake;
-				} else if ((scoreNum - gmbl) < 0.5f) {
-					profit = odds * stake;
+				if(scoreNumBig.subtract(gmbl).floatValue() == -0.25f) {
+					profit = odds.multiply(stake.divide(new BigDecimal("2.0")));
+				} else if (scoreNumBig.subtract(gmbl).floatValue() > 0.5f) {
+					profit = new BigDecimal("0.0").subtract(stake);
+				} else if (scoreNumBig.subtract(gmbl).floatValue() < 0.5f) {
+					profit = odds.multiply(stake);
 				}
 			}
 			break;
 		default:
 			break;
 		}
-		return profit;
+		return profit.floatValue();
 	}
 	
 	/**

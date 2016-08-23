@@ -1,5 +1,6 @@
 package com.ticket.yanyj.action;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -49,17 +50,36 @@ public class TicketAction extends BaseAction {
 		String now = LocalDate.now().toString();
 		ticket.setEndScore(endScore);
 		
-		float profitT = TicketUtil.calutProfit(ticket);
-		float profitBefo = ticket.getProfit();
-		ticket.setProfit(profitT);
+		BigDecimal profitT = new BigDecimal(Float.toString(TicketUtil.calutProfit(ticket))) ;
+		BigDecimal profitBefo = new BigDecimal(Float.toString(ticket.getProfit())) ;
+		ticket.setProfit(profitT.floatValue());
+		
 		ticketService.update(ticket);
-		if(profitT > 0) {
-			accountservice.changeAmount(profitT + ticket.getStake() - profitBefo);
-		} else if (profitT < 0) {
-			accountservice.changeAmount(0 - ticket.getStake() - profitBefo);
-		}
+		
+//		if(profitT.floatValue() > 0) {
+//			accountservice.changeAmount(profitT.add(new BigDecimal(ticket.getStake()).subtract(profitBefo)).floatValue());
+//		} else if (profitT.floatValue() < 0) {
+//			accountservice.changeAmount(new BigDecimal(0).subtract(new BigDecimal(ticket.getStake()).subtract(profitBefo)).floatValue());
+//		}
 		profit = profitService.get(now);
-		profit.setBet_profit(profit.getBet_profit() + profitT - profitBefo);
+		if (ticket.getStatus() != 0) {
+			if(profitBefo.floatValue() < 0) {
+				accountservice.changeAmount(-profitBefo.floatValue());
+			} else if (profitBefo.floatValue() > 0) {
+				accountservice.changeAmount(- (new BigDecimal(Float.toString(ticket.getStake())).add(profitBefo)).floatValue());
+			} else {
+				accountservice.changeAmount(-new BigDecimal(Float.toString(ticket.getStake())).floatValue());
+			}
+			
+		}
+		profit.setBet_profit(new BigDecimal(Float.toString(profit.getBet_profit())).add(profitT).subtract(profitBefo).floatValue());
+		
+		if(ticket.getProfit() >= 0) {
+			accountservice.changeAmount(new BigDecimal(Float.toString(ticket.getStake())).add(profitT).floatValue());
+		} else {
+			accountservice.changeAmount(profitT.add(new BigDecimal(Float.toString(ticket.getStake()))).floatValue());
+		}
+		
 		profitService.update(profit);
 		
 		return null;
@@ -123,6 +143,9 @@ public class TicketAction extends BaseAction {
 	 */
 	public String link() throws Exception {
 		String now = LocalDate.now().toString();
+		if(profitService.get(now) == null) {
+			profitService.add();
+		}
 		profit = profitService.get(now);
 		return SUCCESS;
 	}
@@ -134,15 +157,19 @@ public class TicketAction extends BaseAction {
 	public void setTicketInfo(String ticketInfo) {
 		this.ticketInfo = ticketInfo;
 	}
+	
 	public String getID() {
 		return ID;
 	}
+	
 	public void setID(String iD) {
 		ID = iD;
 	}
+	
 	public String getEndScore() {
 		return endScore;
 	}
+	
 	public void setEndScore(String endScore) {
 		this.endScore = endScore;
 	}

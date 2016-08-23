@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/jsp/account.jsp=UTF-8
 encoding//WebContent/index.jsp=UTF-8
 encoding//src/com/ticket/yanyj/dao/TicketDAO.java=UTF-8
 encoding//src/com/ticket/yanyj/service/TicketService.java=UTF-8
