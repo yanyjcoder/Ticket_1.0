@@ -44,7 +44,7 @@
 	};
 	//]]>
 	
-	jQuery(document).ready(function() {
+	function dateInit() {
 		var d = new Date()
 		var vYear = d.getFullYear()
 		var vMon = d.getMonth() + 1
@@ -57,6 +57,12 @@
 			+ (h < 10 ? "0" + h : h) + ':' + (m < 10 ? "0" + m : m)
 			+ ':' + (se < 10 ? "0" + se : se);
 		$('#time').html("截止当前时间：" + s);	
+		$('#timeCZ').html("截止当前时间：" + s);	
+		$('#timeTX').html("截止当前时间：" + s);	
+	}
+	
+	jQuery(document).ready(function() {
+		dateInit();
 	});
 </script>
 <link type="text/css" href="css/account/styles.css" rel="stylesheet"
@@ -110,10 +116,9 @@
 						<div class="price">
 							<span>$69</span>
 						</div>
-						<div class="time"><span id = "time"></span></div>
+						<div class="time"><span id = "timeCZ"></span></div>
 					</li>
-					<li class="row_style_2 align_center"><span>Lorem ipsum
-							dolor sit</span></li>
+					<li class="row_style_2 align_center"><span>资金流动</span></li>
 					<li class="row_style_2 align_center"><span>Praesent ac
 							elit</span></li>
 					<li class="row_style_2 align_center"><span>Duis quis
@@ -122,8 +127,8 @@
 							rutrum nulla</span></li>
 					<li class="row_style_2 align_center no-option"><span>Quisque
 							mauris urna feugiat</span></li>
-					<li class="row_style_footer_2"><a href="#" class="buy_now">Sign
-							Up</a></li>
+					<li class="row_style_footer_2">
+					<a href="#" class="buy_now">充值</a></li>
 				</ul>
 			</div>
 			<div class="column_1">
@@ -135,11 +140,10 @@
 						<div class="price">
 							<span>$179</span>
 						</div>
-						<div class="time"><span id = "time"></span></div>
+						<div class="time"><span id = "timeTX"></span></div>
 					</li>
 					
-					<li class="row_style_1 align_center"><span>Lorem ipsum
-							dolor sit</span></li>
+					<li class="row_style_1 align_center"><span>资金流动</span></li>
 					<li class="row_style_1 align_center"><span>Praesent ac
 							elit</span></li>
 					<li class="row_style_1 align_center"><span>Duis quis
