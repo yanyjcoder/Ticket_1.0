@@ -73,7 +73,7 @@ public class TicketUtil {
 				if (ticket.getBetType().indexOf("大") != -1) {
 					profit = odds.multiply(stake);
 				} else {
-					profit = new BigDecimal("0.0f").subtract(stake);
+					profit = new BigDecimal("0.0").subtract(stake);
 				}
 			} else if (scoreNumBig.subtract(gmbl).floatValue() < 0) {
 				if (ticket.getBetType().indexOf("大") != -1) {

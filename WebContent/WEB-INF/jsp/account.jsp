@@ -89,7 +89,7 @@
 					</li>
 					<li class="header_row_2 align_center">
 						<div class="price">
-							<span id="amount">￥29</span>
+							<span id="amount">￥${amount}</span>
 						</div>
 						<div class="time"><span id = "time"></span></div>
 					</li>
@@ -103,8 +103,7 @@
 							rutrum nulla</span></li>
 					<li class="row_style_1 align_center no-option"><span>Quisque
 							mauris urna feugiat</span></li>
-					<li class="row_style_footer_1"><a href="#" class="buy_now">Sign
-							Up</a></li>
+					<li class="row_style_footer_1"><a href="#" class="buy_now">更改</a></li>
 				</ul>
 			</div>
 			<div class="column_1">
