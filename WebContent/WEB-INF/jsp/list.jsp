@@ -286,9 +286,10 @@
 			div += "<td id='profit' width='25%'>收益：<font color='#FF0000'>"
 					+ '&#65509;' + bet_profit + "</font></td>";
 		} else {
-			div += "<td id='profit' width='25%'>收益：<font color='#0000FF'>"
+			div += "<td id='profit' width='20%'>收益：<font color='#0000FF'>"
 					+ '&#65509;' + bet_profit + "</font></td>";
 		}
+		div += "<td width='10%'><a href='#' onclick='showprofitBy();' class='button white'>刷新</a></td>";
 		div += "</tr>";
 		div += "</table>";
 		$('#append').append(div);
@@ -297,10 +298,12 @@
 </script>
 </head>
 <body>
-
-	<input class="mytxt" id="ticketInfo" type="text" width="80%"
-		height="10px">
-	<a href="#" onclick="save();" class="button orange bigrounded ">整理并保存到数据库</a>
+<table>
+	<tr>
+		<td><input class="mytxt" id="ticketInfo" type="text"></td>
+		<td><a href="#" onclick="save();" class="button orange bigrounded ">整理并保存数据库</a></td>
+	</tr>
+</table>
 	<br>
 	<div id="append"></div>
 	<table id="gridTable" width="100%" align="center"></table>

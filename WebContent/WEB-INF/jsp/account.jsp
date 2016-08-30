@@ -4,46 +4,15 @@
 <html>
 <title>Tutorial - Free Pricing Table UI Element</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- 
+<link rel="stylesheet" type="text/css" href="css/colorbox/default.css">
+ -->
+<link rel="stylesheet" type="text/css" href="css/colorbox/normalize.css" />
+<link rel="stylesheet" href="css/colorbox/colorbox.css" />
 <script src="js/cloudflare.js" async=""></script>
 <script src="js/jquery-1.5.1.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-	//<![CDATA[
-	try {
-		if (!window.CloudFlare) {
-			var CloudFlare = [ {
-				verbose : 0,
-				p : 0,
-				byc : 0,
-				owlid : "cf",
-				bag2 : 1,
-				mirage2 : 0,
-				oracle : 0,
-				paths : {
-					cloudflare : "/cdn-cgi/nexp/dokv=88e434a982/"
-				},
-				atok : "7c523ad980dc3f17e972bb485300d7bc",
-				petok : "1c0cb2dbb9bcb2ccb25fff2e6fc7e2e61e4c75ea-1409196074-1800",
-				zone : "flashuser.net",
-				rocket : "0",
-				apps : 0
-			} ];
-			CloudFlare.push({
-				"apps" : {
-					"ape" : "0fa19ad3be701d80d91a635ffbf67efa"
-				}
-			});
-			!function(a, b) {
-						a = document.createElement("script"),
-						b = document.getElementsByTagName("script")[0],
-						a.async = !0,
-						a.src = "//ajax.cloudflare.com/cdn-cgi/nexp/dokv=97fb4d042e/cloudflare.min.js",
-						b.parentNode.insertBefore(a, b)
-			}()
-		}
-	} catch (e) {
-	};
-	//]]>
-	
+<script src="js/colorbox/jquery.colorbox.js"></script>
+<script type="text/javascript">	
 	function dateInit() {
 		var d = new Date()
 		var vYear = d.getFullYear()
@@ -64,6 +33,26 @@
 	jQuery(document).ready(function() {
 		dateInit();
 	});
+	
+	function colorBox() {
+		$("#colorbox").colorbox({
+			scalePhotos : false,
+			transition: "elastic",
+	        speed: 20,
+			width : "450",
+			height : "150",
+			open : true,
+			iframe : true ,
+			href : "capitalInput.action",  
+			onLoad:function(){
+				$('#cboxClose').remove();//去除colorbox的关闭按钮（加载时）
+			},
+			onClosed:function() {
+				location.reload();
+			}
+		});
+		
+	}
 </script>
 <link type="text/css" href="css/account/styles.css" rel="stylesheet"
 	media="all">
@@ -103,7 +92,7 @@
 							rutrum nulla</span></li>
 					<li class="row_style_1 align_center no-option"><span>Quisque
 							mauris urna feugiat</span></li>
-					<li class="row_style_footer_1"><a href="#" class="buy_now">更改</a></li>
+					<li class="row_style_footer_1"><a href="#" onclick="colorBox();" class="buy_now">更改</a></li>
 				</ul>
 			</div>
 			<div class="column_1">
@@ -173,6 +162,6 @@
 		</div>
 	</div>
 
-
+<div id = "colorbox" ></div>
 </body>
 </html>

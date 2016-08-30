@@ -27,6 +27,7 @@
                 $("#container").tabs('add', {
                     title: title,
                     content: CreateContent(url),
+                    height: 'auto',
                     closable: true
                 });
             });
@@ -59,7 +60,7 @@
                     <ul class="easyui-tree">
                         <li><a href="javascript:;" class="btn_menu" url="link.action">新建注单</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="linkAccount.action">账户管理</a></li>
-                        <li><a href="javascript:;" class="btn_menu" url="Replace_list.html">代填记录</a></li>
+                        <li><a href="javascript:;" class="btn_menu" url="http://freelive.7m.cn/live.aspx?mark=gb&TimeZone=%2B0800&wordAd=&wadurl=http://&width=700&cpageBgColor=FFFFFF&tableFontSize=12&cborderColor=DDDDDD&ctdColor1=FFFFFF&ctdColor2=E0E9F6&clinkColor=0044DD&cdateFontColor=333333&cdateBgColor=FFFFFF&scoreFontSize=12&cteamFontColor=000000&cgoalFontColor=FF0000&cgoalBgColor=FFFFE1&cremarkFontColor=0000FF&cremarkBgColor=F7F8F3&Skins=10&teamWeight=400&scoreWeight=700&goalWeight=400&fontWeight=700&DSTbox=&away=0&red=0">足球比分查看</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="replace_apply.html">代填申请</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="Audit_list.html">申请审批</a></li>
                         <li><a href="javascript:;" class="btn_menu" url="bill_list.html">账单记录</a></li>

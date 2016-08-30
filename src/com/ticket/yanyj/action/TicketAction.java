@@ -75,7 +75,11 @@ public class TicketAction extends BaseAction {
 		profit.setBet_profit(new BigDecimal(Float.toString(profit.getBet_profit())).add(profitT).subtract(profitBefo).floatValue());
 		
 		if(ticket.getProfit() >= 0) {
-			accountservice.changeAmount(new BigDecimal(Float.toString(ticket.getStake())).add(profitT).floatValue());
+			if(profitBefo.floatValue() < 0) {
+				accountservice.changeAmount(profitT.floatValue());
+			} else {
+				accountservice.changeAmount(new BigDecimal(Float.toString(ticket.getStake())).add(profitT).floatValue());
+			}
 		} else {
 			accountservice.changeAmount(profitT.add(new BigDecimal(Float.toString(ticket.getStake()))).floatValue());
 		}

@@ -34,8 +34,11 @@ public class AccountDAOImpl extends BaseDAO implements AccountDAO {
 
 	@Override
 	public boolean setAmount(float amount) throws Exception {
-
-		return false;
+		String sql = "update t_account set amount = ? where username= 'yanyj'";
+		PreparedStatement pst = getCon().prepareStatement(sql);
+		pst.setFloat(1, amount);
+		
+		return pst.executeUpdate() > 0;
 	}
 
 }

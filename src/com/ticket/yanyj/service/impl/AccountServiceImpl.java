@@ -20,7 +20,7 @@ public class AccountServiceImpl implements AccountService {
 
 	@Override
 	public boolean setAmount(float amount) throws Exception {
-		return false;
+		return accountDAO.setAmount(amount);
 	}
 
 }

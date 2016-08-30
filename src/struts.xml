@@ -32,6 +32,14 @@
 			method="linkAccount">
 			<result name="success">/WEB-INF/jsp/account.jsp</result>
 		</action>
+		<action name="capitalInput" class="com.ticket.yanyj.action.AccountAction"
+			method="capitalInput">
+			<result name="success">/WEB-INF/jsp/capitalInput.jsp</result>
+		</action>
+		<action name="alterAmount" class="com.ticket.yanyj.action.AccountAction"
+			method="alterAmount">
+			<result name="success">/WEB-INF/jsp/capitalInput.jsp</result>
+		</action>
 	</package>
 
 </struts>

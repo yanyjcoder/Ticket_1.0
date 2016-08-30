@@ -188,9 +188,23 @@ public class TicketUtil {
 
 	}
 	
+	/**
+	 * 将页面的数据转化为ticket对象集合
+	 * @author yanyj
+	 * @date 2016年8月30日
+	 * @param ticketInfo
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<Ticket> convertToTickets(String[] ticketInfo) throws Exception{
+		if(ticketInfo[0].indexOf("-") > 0) {
+			return convertGBKToTickets(ticketInfo);
+		}
+		return convertASBSToTickets(ticketInfo);
+	}
 	
 	/**
-	 * 新的字符串数组转换为Ticket集合
+	 * 将ASBS的数据转换为Ticket集合
 	 * @author yanyj
 	 * @date 2016年8月22日
 	 * @描述
@@ -199,7 +213,7 @@ public class TicketUtil {
 	 * @return
 	 * @throws Exception
 	 */
-	public static List<Ticket> convertToTickets(String[] ticketInfo) throws Exception{
+	public static List<Ticket> convertASBSToTickets(String[] ticketInfo) throws Exception{
 		List<Ticket> ticketList = new ArrayList<>();
 		Ticket ticket = null;
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -238,5 +252,71 @@ public class TicketUtil {
 		}
 		
 		return ticketList;
+	}
+	
+	
+	/**
+	 * 将gbk数据转化为Ticket对象集合
+	 * @author yanyj
+	 * @date 2016年8月30日
+	 * @param ticketInfo
+	 * @return
+	 * @throws Exception
+	 */
+	public static List<Ticket> convertGBKToTickets(String[] ticketInfo) throws Exception{
+		List<Ticket> ticketList = new ArrayList<>();
+		Ticket ticket = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		int infoLgt = ticketInfo.length;
+		for (int i = 0; i < infoLgt; i++) {
+			if (ticketInfo[i].equals("足球-滚球大小球")) {
+				String[] info = ticketInfo[i].split("-");
+				ticket = new Ticket();
+				ticket.setClazz(info[0]);
+				ticket.setType(info[1]);
+				i = i + 1;
+				ticket.setID(ticketInfo[i].substring(3));
+				i = i + 1;
+				String dateStr = ticketInfo[i] + " " + ticketInfo[i + 1]; 
+				ticket.setDate(sdf.parse(dateStr.replaceAll("/", "-")));
+				i = i + 2;
+				while(ticketInfo[i].indexOf("-") < 0) {
+					i = i + 1;
+				}
+				i = i + 1;
+				String jsbf = "[" + ticketInfo[i].trim() + "-" + ticketInfo[i + 2].trim() + "]";
+				ticket.setJsbf(jsbf);
+				i = i + 3;
+				String teamStr = ticketInfo[i];
+				while(ticketInfo[i + 1].length() > 1) {
+					i = i + 1;
+					teamStr += ticketInfo[i];
+				}
+				ticket.setTeam(teamStr);
+				i = i + 1;
+				ticket.setBetType(ticketInfo[i]);
+				i = i + 1;
+				String gmblStr = ticketInfo[i];
+				ticket.setGmbl(calGmbl(gmblStr));
+				i = i + 2;
+				ticket.setOdds(Float.parseFloat(ticketInfo[i]));
+				i = i + 2;
+				ticket.setStake(Float.parseFloat(ticketInfo[i].substring(1)));
+				i = i + 1;
+				ticketList.add(ticket);
+			}
+			
+		}
+		
+		return ticketList;
+	}
+	
+	public static float calGmbl(String gmblStr) {
+		String[] gmblArr = gmblStr.split("/");
+		if(gmblArr.length > 1) {
+			BigDecimal gmb = new  BigDecimal(gmblArr[0]); 
+			return gmb.add(new BigDecimal("0.25")).floatValue();
+		}
+		return Float.parseFloat(gmblStr);
 	}
 }
