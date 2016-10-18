@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
 
@@ -50,9 +51,9 @@ public class JsoupHtmlConnetionUtil {
 		Elements elements = null;
 		//System.out.println(document.toString());
 		elements = document.getElementsByAttribute("data-period");
-//		for(Element cpData : elements) {
-//			System.out.println("期号：" + cpData.attr("data-period") + "   开奖号码：" + cpData.attr("data-award").trim());			
-//		}
+		for(Element cpData : elements) {
+			System.out.println("期号：" + cpData.attr("data-period") + "   开奖号码：" + cpData.attr("data-award").trim());			
+		}
 		return elements;
 	}
 	
