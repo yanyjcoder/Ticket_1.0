@@ -90,7 +90,7 @@
             </div>
         </div>
         <div data-options="region:'south',border:false" style="height:50px; font-size:15px; color:#fff; background:#338FCC;padding:10px; text-align:center">
-            © 2016 - yanyj个人系统
+            © 2016年10月26 - yanyj个人系统
         </div>
         <div data-options="region:'center'" style="overflow:hidden">
             <div class="easyui-tabs" fit="true" id="container">

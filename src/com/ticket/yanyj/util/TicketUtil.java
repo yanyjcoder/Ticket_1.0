@@ -222,28 +222,29 @@ public class TicketUtil {
 			if (ticketInfo[i].equals("足球")) {
 				ticket = new Ticket();
 				ticket.setClazz(ticketInfo[i].trim());
-				i = i + 2;
+				i = skip(ticketInfo, i);
 				ticket.setType(ticketInfo[i].trim());
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				ticket.setBetType(ticketInfo[i].trim());
-				i = i + 1;
+				
+				i = skip(ticketInfo, i);
 				ticket.setGmbl(Float.parseFloat(ticketInfo[i].trim()));
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				ticket.setJsbf(ticketInfo[i].trim().substring(0, ticketInfo[i].length()));
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				ticket.setOdds(Float.parseFloat(ticketInfo[i].trim().substring(1)));
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				ticket.setStake(Float.parseFloat(ticketInfo[i].trim()));
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				String teamStr = ticketInfo[i].trim();
 				while (!ticketInfo[i + 1].contains("ID:")) {
 					i ++;
 					teamStr += " " + ticketInfo[i].trim();
 				}
 				ticket.setTeam(teamStr.trim());
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				ticket.setID(ticketInfo[i].substring(3, ticketInfo[i].length() - 3).trim());
-				i = i + 1;
+				i = skip(ticketInfo, i);
 				String dateStr = ticketInfo[i].trim() + " " + ticketInfo[i + 2].trim();
 				ticket.setDate(sdf.parse(dateStr.replaceAll("/", "-")));
 				
@@ -254,6 +255,14 @@ public class TicketUtil {
 		return ticketList;
 	}
 	
+	
+	public static int skip(String[] ticketInfo, int index) {
+		
+		while(ticketInfo[index].contains("午") || !StringUtil.isNotNull(ticketInfo[index])) {
+			index ++;
+		}
+		return index;
+	}
 	
 	/**
 	 * 将gbk数据转化为Ticket对象集合
